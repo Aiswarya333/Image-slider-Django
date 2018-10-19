@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<title>Images</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+.mySlides {display:none;}
+.content {
+    width: 200px;
+    height: 120px;
+}
+</style>       
+<body>
+<div class="conent">
+        {% for item in objects %}
+                <img src="{{item.image.url}}" class="mySlides">
+        {% endfor %}
+                <button class="b1" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="b2" onclick="plusDivs(1)">&#10095;</button>
+</div>
+<script>
+                var slideIndex = 1;
+                showDivs(slideIndex);
+                
+                function plusDivs(n) {
+                  showDivs(slideIndex += n);
+                }
+                
+                function showDivs(n) {
+                  var i;
+                  var x = document.getElementsByClassName("mySlides");
+                  if (n > x.length) {slideIndex = 1}    
+                  if (n < 1) {slideIndex = x.length}
+                  for (i = 0; i < x.length; i++) {
+                     x[i].style.display = "none";  
+                  }
+                  x[slideIndex-1].style.display = "block";  
+                }
+                </script>
+</body>

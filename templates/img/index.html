@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Images</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+    
+ </head>
+
+<style>
+.mySlides {
+    display:none;
+    width: 500px;
+    height: 420px;
+    }
+
+</style>       
+<body>
+<center>
+<h1>Select your choice...</h1> 
+<div class="content1">
+        {% for item in objects %}
+                <img src="{{item.image.url}}" class="mySlides">
+        {% endfor %}
+                <button class="b1" onclick="plusDivs(-1)">&#10094;</button>
+                <button class="b2" onclick="plusDivs(1)">&#10095;</button>
+</div>
+</center>
+<script>
+                var slideIndex = 1;
+                showDivs(slideIndex);
+                
+                function plusDivs(n) {
+                  showDivs(slideIndex += n);
+                }
+                
+                function showDivs(n) {
+                  var i;
+                  var x = document.getElementsByClassName("mySlides");
+                  if (n > x.length) {slideIndex = 1}    
+                  if (n < 1) {slideIndex = x.length}
+                  for (i = 0; i < x.length; i++) {
+                     x[i].style.display = "none";  
+                  }
+                  x[slideIndex-1].style.display = "block";  
+                }
+                </script>
+</body>
+</html>
